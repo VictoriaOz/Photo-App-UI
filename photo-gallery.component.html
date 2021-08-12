@@ -1,0 +1,20 @@
+<ion-app>
+  <ion-header>
+    <h1 class="title">{{title}}</h1>
+  </ion-header>
+  <ion-content>
+    <app-photo-gallery-image *ngIf="defaultImage" [imagePath]="defaultImage.webPath"></app-photo-gallery-image>
+    <ion-list>
+      <ion-item *ngFor="let image of images">
+        <app-photo-gallery-image [imagePath]="image.imagePath"></app-photo-gallery-image>
+        <p *ngIf="hasImage(image)">Has image</p>
+      </ion-item>
+      <p style="margin: 10px;">There are {{images.length}} images</p>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-button expand="full" fill="clear" class="button" (click)="addPhoto()">
+      <ion-icon name="camera"></ion-icon> &nbsp; Add Photo
+    </ion-button>
+  </ion-footer>
+</ion-app>
